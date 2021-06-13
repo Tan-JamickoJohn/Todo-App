@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/bloc/tasks_bloc.dart';
 import 'package:todo_app/models/task.dart';
+import 'package:todo_app/pages/widgets/create_task_modal.dart';
 import 'package:todo_app/pages/widgets/todo_item.dart';
 import 'package:todo_app/util/helpers/screen_manager.dart';
 
@@ -27,11 +28,12 @@ class _HomeState extends State<HomePage> {
         create: (context) => _tasksBloc,
         child: SafeArea(
           child: Scaffold(
-              appBar: _buildAppBar(),
-              bottomNavigationBar: _buildBottomNavBar(),
-              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-              floatingActionButton: _buildFAB(),
-              body: _buildBody()),
+            appBar: _buildAppBar(),
+            bottomNavigationBar: _buildBottomNavBar(),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+            floatingActionButton: _buildFAB(),
+            body: _buildBody(),
+          ),
         ));
   }
 
@@ -53,7 +55,16 @@ class _HomeState extends State<HomePage> {
   Widget _buildFAB() {
     return FloatingActionButton(
       child: Icon(Icons.add),
-      onPressed: () {},
+      onPressed: () {
+        showModalBottomSheet(
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            context: context,
+            routeSettings: RouteSettings(arguments: _tasksBloc),
+            builder: (context) {
+              return CreateTaskModal();
+            });
+      },
     );
   }
 
@@ -65,6 +76,7 @@ class _HomeState extends State<HomePage> {
 
   Widget _buildBody() {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: ScreenManager.wp(5), vertical: ScreenManager.hp(2.5)),
       child: StreamBuilder<Map<String, Task>>(
         stream: _tasksBloc.tasksController,
         initialData: {},
