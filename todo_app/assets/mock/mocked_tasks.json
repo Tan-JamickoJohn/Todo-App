@@ -1,0 +1,46 @@
+{
+    "tasks":[
+        {   
+            "id": "1",
+            "isFinished" : false,
+            "name": "Feed dog",
+            "description": "Feed the hungry big dog."
+        },
+        {
+            "id": "2",
+            "isFinished" : false,
+            "name": "Apply for job",
+            "description": "Road to 500 rejections."
+        },
+        {
+            "id": "3",
+            "isFinished" : false,
+            "name": "Edit graduation photos",
+            "description": "Edit grad photos of Nayeon"
+        },
+        {
+            "id": "4",
+            "isFinished" : false,
+            "name": "Wash the dishes",
+            "description": "Wash two weeks worth of dirty dishes."
+        },
+        {
+            "id": "5",
+            "isFinished" : false,
+            "name": "Practice singing",
+            "description": "Be the next American Idol"
+        },
+        {
+            "id": "6",
+            "isFinished" : false,
+            "name": "Cook steak for dinner",
+            "description": "Become the next Master Chef"
+        },
+        {
+            "id": "7",
+            "isFinished" : false,
+            "name": "Grind leetcode",
+            "description": "as a millionare"
+        } 
+    ]
+}
