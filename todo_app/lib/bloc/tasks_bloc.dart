@@ -40,4 +40,32 @@ class TasksBloc extends BlocBase {
     tasks[task.id] = task;
     _tasksController.add(tasks);
   }
+
+  void deleteMock(Task task) {
+    tasks.remove(task.id);
+    _tasksController.add(tasks);
+  }
+
+  void updateMock(Task task, String newName, String newDescription) {
+    task.name = newName ?? '';
+    task.description = newDescription ?? '';
+    tasks.update(task.id, (value) => task, ifAbsent: () => task);
+    _tasksController.add(tasks);
+  }
+
+  String _generateMockId() {
+    return (tasks.length + 1).toString();
+  }
+
+  void createMock(String name, String description) {
+    Task task = Task(
+      id: _generateMockId(),
+      description: description ?? '',
+      name: name ?? '',
+      isFinished: false,
+    );
+
+    tasks[task.id] = task;
+    _tasksController.add(tasks);
+  }
 }
